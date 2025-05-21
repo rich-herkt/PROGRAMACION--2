@@ -42,7 +42,7 @@ else:
     
 #BUSQUEDA BINARIA 
 "\n"
-contador=0 #Variable la cual nos permitira contabilizar cuantas veces se ha ejecutado el bucle
+#Variable la cual nos permitira contabilizar cuantas veces se ha ejecutado el bucle
 def busqueda_binaria(numeros, numero_a_buscar):
     # Inicializamos los límites de la búsqueda: inicio en 0 y fin la longitud de la lista -1
     inicio = 0
