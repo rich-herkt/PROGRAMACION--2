@@ -64,6 +64,15 @@ def busqueda_binaria_nombre(lista_ordenada, objetivo):
 
     return -1, comparaciones  # No encontrado
 
+def busqueda_lineal(lista,objetivo):
+    comparaciones=0
+    for i in range(len(lista)):
+        comparaciones+=1
+        if lista[i][0].lower()==objetivo.lower():
+            return i,comparaciones
+        
+    return -1,comparaciones
+
 
 inventario_ordenado_por_nombre=insertion_sort_por_nombre(clientes.copy())
 print("Inventario Ordenado por nombre:")
@@ -78,22 +87,34 @@ for productos in inventario_ordenado_por_precio:
     print(productos)
 print("\n")
 
+
 print("Ingrese el nombre del cliente que desea buscar..")
 try:
-    nombre=input("")
+    nombre=input("").strip()
 except Exception:
     print("Ingrese el nombre del cliente que desea buscar..")
-    nombre=input("")
+    nombre=input("").strip()
     
-busqueda=busqueda_binaria_nombre(inventario_ordenado_por_nombre,nombre)
+ordenada=input("Desea trabajar con la lista ordenada ? SI(S) NO(N)").upper()
+while ordenada != "S" and  ordenada !="N":
+    print("Ingrese (S) o (N)")
+    ordenada=input("Desea trabajar con la lista ordenada ? SI(S) NO(N)").upper()
+    
+if ordenada =="S":
+    busqueda=busqueda_binaria_nombre(inventario_ordenado_por_nombre,nombre)
+elif ordenada=="N":
+    busqueda=busqueda_lineal(clientes,nombre)
+    
+
+    
 
 if busqueda[0] != -1:
-    print(f"\ncliente encontrado: {nombre} en posición {busqueda[0]}")
+    print(f"\nCliente encontrado: {nombre} en posición {busqueda[0]}")
 else:
-    print("\ncliente no encontrado.")
+    print("\nCliente no encontrado.")
 
 print(f"Comparaciones realizadas: {busqueda[1]}")
-
+print("\n")
 try:
     opcion=input("Desea Ingresar Un nuevo Cliente  SI(S) NO(N)?").upper()
 except Exception:
@@ -107,10 +128,10 @@ while opcion != "S" and opcion!= "N":
 if opcion=="S":
     cliente=input("Ingrese el nombre del cliente..")
     saldo=float(input("Ingrese el saldo del cliente.."))
-    clientes.append((cliente,saldo))
+    inventario_ordenado_por_nombre.append((cliente,saldo))
     print("\n")
     print("Cliente agregado con exito..")
-    for j in clientes: 
+    for j in inventario_ordenado_por_nombre: 
         print(j)
 elif opcion=="N":
     print("OK, hasta luego")
