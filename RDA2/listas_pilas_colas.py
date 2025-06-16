@@ -1,5 +1,5 @@
 print("""Elaborado por: Richard Herkt
-        Fecha: 09/6/2024
+        Fecha: 9/6/2024
         Carrera: Ing. Sistemas de la Información  
         Ing.Edison Emeneses\n""")
 print("""
